@@ -21,8 +21,11 @@ def validate_birthday(birthday):
 
     year, month, day = map(int, birthday.split('-'))
 
-    if year < 1900 or year > 2023:
-        return {'valid': False, 'error_message': "Invalid year. Please enter a year between 1900 and 2023."}
+        # Get the current year
+    current_year = datetime.now().year
+    
+    if year < 1900 or year > current_year:
+        return {'valid': False, 'error_message': f"Invalid year. Please enter a year between 1900 and {current_year}."}
 
     if month < 1 or month > 12:
         return {'valid': False, 'error_message': "Invalid month. Please enter a month between 1 and 12."}
