@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Birthday Checker</title>
+    <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Birthday Checker</h1>
+    </header>
+
+    <main>
+        {% if error_message %}
+            <p class="error">{{ error_message }}</p>
+        {% endif %}
+
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% endif %}
+
+        {% if age %}
+            <p class="age">You are {{ age }} years old.</p>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <label for="birthday">Please enter your birthday (YYYY-MM-DD):</label>
+            <input type="text" id="birthday" name="birthday">
+            <br>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+        <br>
+        <img src="../static/cake.png" alt="The cake is a lie">
+
+    </main>
+    
+    <footer>
+        <p>&copy; 2023 All rights reserved.</p>
+    </footer>
+</body>
+</html>
